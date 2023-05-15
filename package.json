@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "prompt": "^1.2.2",
+    "prompt-sync": "^4.2.0",
+    "save": "^2.4.0"
+  }
+}

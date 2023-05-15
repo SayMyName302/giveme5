@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "917865933240",
+    "project_id": "giveme5officialproject",
+    "storage_bucket": "giveme5officialproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917865933240:android:4eacd49d3cf93fb172474d",
+        "android_client_info": {
+          "package_name": "com.giveme5.giveme5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917865933240-19k37ln5cfirl1j94vvi6rpfjnbv1urf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIg0msGznz_gv-FA6yr4FZeY3t9zK04c8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "917865933240-19k37ln5cfirl1j94vvi6rpfjnbv1urf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
