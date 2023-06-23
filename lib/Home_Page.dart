@@ -10,6 +10,7 @@ import 'package:giveme5/MySlider.dart';
 import 'package:giveme5/Season_details_Page.dart';
 import 'package:giveme5/WebView.dart';
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:giveme5/newsticker.dart';
 import 'admob_service.dart';
 
 
@@ -118,7 +119,7 @@ class _HomePageState extends State<HomePage>
           child: Column(
           children: [
 
-
+            NewsTicker(),
             MySlider(),
 
 
@@ -327,6 +328,8 @@ class _HomePageState extends State<HomePage>
                       return Center(child: CircularProgressIndicator());
                     }
                     else{
+
+
                       return ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: latestShortClips.data.length,

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.giveme5.giveme5">
+    package="com.giveme5giveme5.giveme5giveme5">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
@@ -11,7 +11,7 @@
         android:label="GiveMe5 Official"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name="com.giveme5.giveme5.MainActivity"
+            android:name="com.giveme5giveme5.giveme5giveme5.MainActivity"
             android:launchMode="singleTop"
             android:exported="true"
             android:theme="@style/LaunchTheme"
