@@ -1,57 +1,65 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class NewsTicker extends StatefulWidget {
+class MyApp extends StatefulWidget {
   @override
-  _NewsTickerState createState() => _NewsTickerState();
+  _MyAppState createState() => _MyAppState();
 }
 
-class _NewsTickerState extends State<NewsTicker> {
-  List<String> newsTickerTexts = [];
-  int currentTextIndex = 0;
+class _MyAppState extends State<MyApp> {
+  List<String> marqueeTexts = [];
+  bool isLoading = true;
+
+  Future<void> fetchData() async {
+    try {
+      DocumentReference documentRef =
+      Firestore.instance.collection('news_ticker').document('ticker_texts');
+      DocumentSnapshot snapshot = await documentRef.get();
+
+      List<String> texts = List<String>.from(snapshot.data['texts']);
+
+      setState(() {
+        marqueeTexts = texts;
+        isLoading = false;
+      });
+    } catch (e) {
+      // Handle error
+      print(e);
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    fetchNewsTickerTexts();
-  }
-
-  void fetchNewsTickerTexts() async {
-    final snapshot = await FirebaseFirestore.instance
-        .collection('news_ticker')
-        .doc('ticker_texts')
-        .get();
-
-    if (snapshot.exists) {
-      setState(() {
-        newsTickerTexts = List<String>.from(snapshot.data()['texts']);
-      });
-
-      startTicker();
-    }
-  }
-
-  void startTicker() {
-    Future.delayed(Duration(seconds: 3), () {
-      setState(() {
-        currentTextIndex = (currentTextIndex + 1) % newsTickerTexts.length;
-      });
-
-      startTicker();
-    });
+    fetchData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Marquee(
-      text: newsTickerTexts.isEmpty ? '' : newsTickerTexts[currentTextIndex],
-      style: TextStyle(fontSize: 16),
-      blankSpace: 20.0,
+    return ListView(
+      children: [
+        _buildComplexMarquee(),
+      ].map(_wrapWithStuff).toList(),
+    );
+  }
+
+  Widget _buildComplexMarquee() {
+    return isLoading
+        ? Center(child: CircularProgressIndicator()) // Show loading indicator
+        : Marquee(
+      text: marqueeTexts.join('  🗡  '),
+      style: TextStyle(
+        fontSize: 18.5,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
       scrollAxis: Axis.horizontal,
       crossAxisAlignment: CrossAxisAlignment.start,
-      velocity: 100.0,
-      pauseAfterRound: Duration(seconds: 1),
+      blankSpace: 20.0,
+      textDirection: TextDirection.rtl,
+      velocity: 50.0,
+      pauseAfterRound: Duration(seconds: 3),
       showFadingOnlyWhenScrolling: true,
       fadingEdgeStartFraction: 0.1,
       fadingEdgeEndFraction: 0.1,
@@ -60,7 +68,13 @@ class _NewsTickerState extends State<NewsTicker> {
       accelerationCurve: Curves.linear,
       decelerationDuration: Duration(milliseconds: 500),
       decelerationCurve: Curves.easeOut,
-      textDirection: TextDirection.ltr,
+    );
+  }
+
+  Widget _wrapWithStuff(Widget child) {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Container(height: 50.0, child: child),
     );
   }
 }
