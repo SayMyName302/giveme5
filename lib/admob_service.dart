@@ -16,7 +16,7 @@ class AdmobService {
       return 'Banner Add Id for IOS';
     } else if (Platform.isAndroid) {
 
-   return 'ca-app-pub-4175485348048619/1103866241';    // NEW add ID
+   return 'ca-app-pub-4175485348048619/2159212443';    // NEW add ID
 
    //return 'ca-app-pub-3940256099942544/6300978111';   // Test add ID
     }
@@ -28,9 +28,9 @@ class AdmobService {
       return 'Interstitial Ads Id for IOS';
     } else if (Platform.isAndroid) {
 
- return 'ca-app-pub-4175485348048619/8599212883';    // Orignal add ID
+return 'ca-app-pub-4175485348048619/5523742381';    // Orignal add ID
 
-     // return 'ca-app-pub-3940256099942544/1033173712';   // Test add ID
+   // return 'ca-app-pub-3940256099942544/1033173712';   // Test add ID
     }
     return null;
   }

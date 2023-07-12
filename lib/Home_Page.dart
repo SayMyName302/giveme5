@@ -136,9 +136,9 @@ class _HomePageState extends State<HomePage>
                   children: [
                     Heading('News'),
                     Container(
-                      height: 60,
+                      height: 90,
                       width: double.infinity,
-                      child: MyApp(),
+                      child: Expanded(child: MyApp()),
                     ),
                   ],
                 ),

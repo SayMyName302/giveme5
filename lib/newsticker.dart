@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
         _buildComplexMarquee(),
       ].map(_wrapWithStuff).toList(),
@@ -46,7 +46,12 @@ class _MyAppState extends State<MyApp> {
 
   Widget _buildComplexMarquee() {
     return isLoading
-        ? Center(child: CircularProgressIndicator()) // Show loading indicator
+        ? Center(child: Container(
+        height:20,width:20,
+
+        child: CircularProgressIndicator())) // Show loading indicator
+
+
         : Marquee(
       text: marqueeTexts.join('  🗡  '),
       style: TextStyle(
@@ -74,7 +79,7 @@ class _MyAppState extends State<MyApp> {
   Widget _wrapWithStuff(Widget child) {
     return Padding(
       padding: EdgeInsets.all(16.0),
-      child: Container(height: 50.0, child: child),
+      child: Container(height: 40.0, child: child),
     );
   }
 }
